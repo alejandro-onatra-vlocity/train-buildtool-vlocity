@@ -1,0 +1,23 @@
+
+projectPath: /Users/alejandro/Vlocity/Projects/Sky/NewCrmVlocity/src
+expansionPath: ./
+buildFile: /Users/alejandro/Vlocity/Projects/Sky/NewCrmVlocity/build-file.json
+
+preStepApex:
+  Deploy: 
+    VlocityUITemplate: DeactivateTemplatesAndLayouts.cls
+    VlocityUILayout: DeactivateTemplatesAndLayouts.cls
+
+queries: 
+#  - VlocityDataPackType: VlocityUITemplate
+#    query: SELECT Id FROM %vlocity_namespace%__VlocityUITemplate__c where (Name LIKE 'RO-%' OR Name LIKE 'skyCO-%' OR Name LIKE 'cpq-product-cart-item-delete%') AND %vlocity_namespace%__Active__c = true
+#  - VlocityDataPackType: Promotion
+#    query: Select Id from %vlocity_namespace%__Promotion__c limit 1
+  - VlocityDataPackType: VlocityUITemplate
+    query: SELECT Id FROM %vlocity_namespace%__VlocityUITemplate__c where Name LIKE 'skyCO%' AND %vlocity_namespace%__Active__c = true
+  - VlocityDataPackType: VlocityUILayout
+    query: Select Id from %vlocity_namespace%__VlocityUILayout__c where Name LIKE 'skyCO%' AND %vlocity_namespace%__Active__c= true
+  
+
+compileOnBuild: false
+defaultMaxParallel: 10

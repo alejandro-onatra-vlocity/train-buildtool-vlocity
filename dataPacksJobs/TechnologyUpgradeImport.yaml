@@ -1,0 +1,41 @@
+
+# ===================== PROJECT FILE SETUP =====================================
+
+projectPath: # <target_file> ie. /Users/alejandro/Vlocity/Projects/Sky/NewCrmVlocity/src
+expansionPath: ./
+# At the moment it is not doing anything meaningful just put an quivalent value.
+buildFile: # <build_file_file> ie. /Users/alejandro/Vlocity/Projects/Sky/NewCrmVlocity/build-file.json
+
+# ===================== PRE AND POST ACTIONS ====================================
+preStepApex:
+
+  Deploy: 
+    VlocityUITemplate: DeactivateTemplatesAndLayouts.cls
+    VlocityUILayout: DeactivateTemplatesAndLayouts.cls
+
+# ===================== EXPORT DATAPACK USING QUERIES ===========================
+
+queries:
+  # - VlocityDataPackType: OmniScript
+  #   query: Select Id from %vlocity_namespace%__OmniScript__c where %vlocity_namespace%__Type__c = 'Portale' AND %vlocity_namespace%__SubType__c = 'SKY180' AND %vlocity_namespace%__IsActive__c = true 
+
+# ===================== EXPORT DATAPACK USING MANIFEST ===========================
+
+manifest:
+
+  VlocityCard:
+    # - skyCO-cpq-product-cart-item
+    
+  VlocityUILayout:
+    # - skyCO-cpq-product-cart
+
+  VlocityUITemplate:
+    # - list-table-orderitems-sky180
+
+# ===================== GENERAL CONFIGURATION===========================
+
+activate: true # Activate all deactivated templates/layouts after deploy
+delete: false # Delete the VlocityDataPack__c file on finish
+manifestOnly: false # If true, an Export job will only save items specifically listed in the manifest (this case false because we are using manifest and queries at the same time)
+compileOnBuild: false # Compile files before deploy which were not compiled on the export
+defaultMaxParallel: 10 # The number of parallel processes to use for export
